@@ -4,6 +4,7 @@ const guessedNumber = document.getElementById('number-input');
 const guessButton = document.getElementById('guess-button');
 const displayedResult = document.getElementById('result-space');
 const guessesLeft = document.getElementById('guess-space');
+const playAgain = document.getElementById('playagain-button');
 
 // initialize global state
 let guessCount = 4;
@@ -27,10 +28,15 @@ guessButton.addEventListener('click', () => {
   if (guessCount === 0) {
     guessedNumber.disabled = true;
     guessButton.disabled = true;
+    playAgain.style.visibility = 'visible';
   }
   console.log(result);
   console.log(correctAnswer);
   console.log(guessCount);
+})
+
+playAgain.addEventListener('click', () => {
+  window.location.reload();
 })
   // get user input
   // use user input to update state 

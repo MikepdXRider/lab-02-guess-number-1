@@ -31,3 +31,6 @@ button {
     font-family: 'Oswald', sans-serif;   
 }
 
+.playagain {
+    visibility: hidden;
+}
