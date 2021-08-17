@@ -3,9 +3,10 @@ import { compareNumbers } from './utils.js';
 const guessedNumber = document.getElementById('number-input');
 const guessButton = document.getElementById('guess-button');
 const displayedResult = document.getElementById('result-space');
+const guessesLeft = document.getElementById('guess-space');
 
 // initialize global state
-let guessCount = 0;
+let guessCount = 4;
 
 let correctAnswer = Math.ceil(Math.random() * 20);
 // set event listeners 
@@ -20,7 +21,13 @@ guessButton.addEventListener('click', () => {
     else {
     displayedResult.textContent = 'Too low! Guess again.'}
 
-  guessCount++;
+  guessCount--;
+  guessesLeft.textContent = guessCount;
+
+  if (guessCount === 0) {
+    guessedNumber.disabled = true;
+    guessButton.disabled = true;
+  }
   console.log(result);
   console.log(correctAnswer);
   console.log(guessCount);
