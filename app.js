@@ -14,6 +14,7 @@ let correctAnswer = Math.ceil(Math.random() * 20);
 function disableToPlayAgain() {
   guessedNumber.disabled = true;
   guessButton.disabled = true;
+  guessButton.style.color = "gray";
   playAgain.style.visibility = 'visible';
 }
 
@@ -24,8 +25,7 @@ guessButton.addEventListener('click', () => {
 
   if (result === 0) {
     displayedResult.textContent = 'Holy wow, you got it!' 
-    disableToPlayAgain();
-    }
+    disableToPlayAgain();}
     else if (result === 1) {
     displayedResult.textContent = 'Too high!' }
     else {
@@ -39,10 +39,6 @@ guessButton.addEventListener('click', () => {
     disableToPlayAgain();
   }
 
-
-  console.log(result);
-  console.log(correctAnswer);
-  console.log(guessCount);
 })
 
 playAgain.addEventListener('click', () => {
