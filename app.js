@@ -10,26 +10,36 @@ const playAgain = document.getElementById('playagain-button');
 let guessCount = 4;
 
 let correctAnswer = Math.ceil(Math.random() * 20);
+
+function disableToPlayAgain() {
+  guessedNumber.disabled = true;
+  guessButton.disabled = true;
+  playAgain.style.visibility = 'visible';
+}
+
 // set event listeners 
 guessButton.addEventListener('click', () => {
   let currentGuess = (Number(guessedNumber.value));
   let result = compareNumbers(currentGuess, correctAnswer);
 
-  if (result === 1) {
-    displayedResult.textContent = 'Too high! Guess again.' }
-    else if (result === 0) {
-    displayedResult.textContent = 'Holy wow, you got it!' }
+  if (result === 0) {
+    displayedResult.textContent = 'Holy wow, you got it!' 
+    disableToPlayAgain();
+    }
+    else if (result === 1) {
+    displayedResult.textContent = 'Too high!' }
     else {
-    displayedResult.textContent = 'Too low! Guess again.'}
+    displayedResult.textContent = 'Too low!'}
 
   guessCount--;
   guessesLeft.textContent = guessCount;
 
-  if (guessCount === 0) {
-    guessedNumber.disabled = true;
-    guessButton.disabled = true;
-    playAgain.style.visibility = 'visible';
+  if ((guessCount === 0) && (result !== 0)) {
+    displayedResult.textContent = 'Aw, you lost to the robot.';
+    disableToPlayAgain();
   }
+
+
   console.log(result);
   console.log(correctAnswer);
   console.log(guessCount);
