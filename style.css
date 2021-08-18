@@ -67,6 +67,10 @@ footer {
     align-items: center;
 }
 
+footer > h2 {
+    margin-bottom: 1px;
+}
+
 footer > div {
     font-size: 1.3em;
 }
@@ -76,10 +80,19 @@ button {
     font-family: 'Oswald', sans-serif;   
     background-color: black;
     color: yellow;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid white;
     cursor: pointer;
     margin-top: 20px;
+    box-shadow: 0px 0px 5px #999;
+    border-radius: 20px;
+}
+
+button:active {
+    background-color:yellow;
+    color:black;
+    box-shadow: 0px 0px 0px #999;
+
 }
 
 .playagain {
