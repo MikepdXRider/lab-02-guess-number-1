@@ -24,18 +24,18 @@ guessButton.addEventListener('click', () => {
   let result = compareNumbers(currentGuess, correctAnswer);
 
   if (result === 0) {
-    displayedResult.textContent = 'Holy wow, you got it!' 
+    displayedResult.textContent = 'Holy wow, you got it!'; 
     disableToPlayAgain();}
     else if (result === 1) {
-    displayedResult.textContent = 'Too high!' }
+    displayedResult.textContent = 'Too high!';}
     else {
-    displayedResult.textContent = 'Too low!'}
+    displayedResult.textContent = 'Too low!';}
 
   guessCount--;
   guessesLeft.textContent = guessCount;
 
   if ((guessCount === 0) && (result !== 0)) {
-    displayedResult.textContent = 'Aw, you lost to the robot.';
+    displayedResult.textContent = `Aw, you lost to the robot. The robot was thinking of ${correctAnswer}.`;
     disableToPlayAgain();
   }
 
