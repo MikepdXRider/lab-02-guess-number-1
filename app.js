@@ -42,7 +42,13 @@ guessButton.addEventListener('click', () => {
 })
 
 playAgain.addEventListener('click', () => {
-  window.location.reload();
+  guessedNumber.disabled = false;
+  guessButton.disabled = false;
+  guessButton.style.color = "yellow";
+  playAgain.style.visibility = 'hidden';
+  displayedResult.textContent = 'Your result will show here.';
+  guessCount = 4;
+  guessesLeft.textContent = guessCount;
 })
   // get user input
   // use user input to update state 
