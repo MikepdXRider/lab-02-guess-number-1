@@ -8,6 +8,9 @@ const playAgain = document.getElementById('playagain-button');
 
 // initialize global state
 let guessCount = 4;
+let correctGuesses = 0;
+let wrongGuesses = 0;
+
 
 let correctAnswer = Math.ceil(Math.random() * 20);
 
@@ -20,11 +23,14 @@ function disableToPlayAgain() {
 
 // set event listeners 
 guessButton.addEventListener('click', () => {
+  wrongGuesses++;
   let currentGuess = (Number(guessedNumber.value));
   let result = compareNumbers(currentGuess, correctAnswer);
+  console.log(correctAnswer);
 
   if (result === 0) {
-    displayedResult.textContent = 'Holy wow, you got it!'; 
+    correctGuesses++;
+    displayedResult.textContent =  `Holy wow, you got it! You have guessed correctly ${correctGuesses} time(s).`; 
     disableToPlayAgain();}
     else if (result === 1) {
     displayedResult.textContent = 'Too high!';}
@@ -35,7 +41,7 @@ guessButton.addEventListener('click', () => {
   guessesLeft.textContent = guessCount;
 
   if ((guessCount === 0) && (result !== 0)) {
-    displayedResult.textContent = `Aw, you lost to the robot. The robot was thinking of ${correctAnswer}.`;
+    displayedResult.textContent = `Aw, you lost to the robot. The robot was thinking of ${correctAnswer}. You have guessed incorrectly ${wrongGuesses} time(s).`;
     disableToPlayAgain();
   }
 
@@ -49,6 +55,7 @@ playAgain.addEventListener('click', () => {
   displayedResult.textContent = 'Your result will show here.';
   guessCount = 4;
   guessesLeft.textContent = guessCount;
+  correctAnswer = Math.ceil(Math.random() * 20);
 })
   // get user input
   // use user input to update state 
